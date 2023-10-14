@@ -5,38 +5,46 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import pl.krzysztofskul.contactsapp.entry.AddressEntry;
 
 @SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
+@TestInstance(Lifecycle.PER_CLASS)
 class ContactDemoGeneratorTest {
 
 	@Autowired
-	private static ContactDemoGenerator contactDemoGenerator;
+	private ContactDemoGenerator contactDemoGenerator;
 	
 	@Autowired
 	private ContactRepo contactRepo;
 	
-	private static List<Contact> testContactList = new ArrayList<Contact>();
+	public List<Contact> testContactList = new ArrayList<Contact>();
 	
-	@BeforeClass
-	static void testInitDataAndReturn() {
+	@BeforeAll
+	void testInitDataAndReturn() {
 		testContactList = contactDemoGenerator.initDataAndReturn();
-		assertTrue(testContactList != null);
+		assertTrue(testContactList != null & testContactList.size() > 0);
 	}
 	
 	@Test
 	@Order(value = 1)
-	void givenContactList_whenGetAddresEntry_shouldNotNull() {
+	void givenContactList_whenGetAddressEntry_shouldNotNull() {
 		for (Contact contact : testContactList) {
-			assertTrue(contact.getAddressesEntryList() != null & contact.getAddressesEntryList().size() > 0);
+			assertTrue(contact.getAddressEntryList() != null & contact.getAddressEntryList().size() > 0);
 			assertTrue(contact.getEmailEntries() != null & contact.getEmailEntries().size() > 0);
-			for (AddressEntry addressEntry: contact.getAddressesEntryList()) {
+			for (AddressEntry addressEntry: contact.getAddressEntryList()) {
 				assertTrue(addressEntry.getAddress() != null);
 				assertTrue(addressEntry.getAddress().getCountry() != null);
 			}

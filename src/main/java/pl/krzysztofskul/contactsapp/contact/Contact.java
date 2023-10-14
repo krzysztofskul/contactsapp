@@ -2,10 +2,8 @@ package pl.krzysztofskul.contactsapp.contact;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
-
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import pl.krzysztofskul.contactsapp.entry.AddressEntry;
 import pl.krzysztofskul.contactsapp.entry.EmailEntry;
 import pl.krzysztofskul.contactsapp.entry.PhoneNumberEntry;
@@ -32,13 +30,16 @@ public class Contact {
 	private Subject subject;
 	
 	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<PhoneNumberEntry> phoneNumberEntries = new ArrayList();
 	
 	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<EmailEntry> emailEntries = new ArrayList();
 	
 	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
-	private List<AddressEntry> addressesEntryList = new ArrayList<AddressEntry>();
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<AddressEntry> addressEntryList = new ArrayList<AddressEntry>();
 
 	/**
 	 * 
@@ -53,11 +54,11 @@ public class Contact {
 	 * @param emailEntries
 	 * @param addressesEntryList
 	 */
-	public Contact(Subject subject, List<PhoneNumberEntry> phoneNumberEntries, List<EmailEntry> emailEntries, List<AddressEntry> addressesEntryList) {
+	public Contact(Subject subject, List<PhoneNumberEntry> phoneNumberEntries, List<EmailEntry> emailEntries, List<AddressEntry> addressEntryList) {
 		this.subject = subject;
 		this.phoneNumberEntries = phoneNumberEntries;
 		this.emailEntries = emailEntries;
-		this.addressesEntryList = addressesEntryList;
+		this.addressEntryList = addressEntryList;
 	}
 
 	/**
@@ -125,16 +126,16 @@ public class Contact {
 	/**
 	 * @return the addressesEntryList
 	 */
-	public List<AddressEntry> getAddressesEntryList() {
-		return addressesEntryList;
+	public List<AddressEntry> getAddressEntryList() {
+		return addressEntryList;
 	}
 
 	/**
 	 * @param addressesEntryList the addressesEntryList to set
 	 */
-	public void setAddressesEntryList(List<AddressEntry> addressesEntryList) {
-		this.addressesEntryList = addressesEntryList;
-		for (AddressEntry addressEntry : addressesEntryList) {
+	public void setAddressEntryList(List<AddressEntry> addressEntryList) {
+		this.addressEntryList = addressEntryList;
+		for (AddressEntry addressEntry : addressEntryList) {
 			addressEntry.setContact(this);
 		}
 	}

@@ -48,7 +48,7 @@ public class ContactDemoGenerator implements InitDataGenerator<Contact> {
 		Contact contact = new Contact();
 		contact.setEmailEntries(getDemoEmails());
 		contact.setPhoneNumberEntries(getDemoPhoneNumbers());
-		contact.setAddressesEntryList(getDemoAddressItems());		
+		contact.setAddressEntryList(getDemoAddressItems());		
 		contact.setSubject(subject);
 		return contact;
 	}
