@@ -1,4 +1,4 @@
-package pl.krzysztofskul.contactsapp.item;
+package pl.krzysztofskul.contactsapp.entry;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 @MappedSuperclass
-public abstract class Item<T> {
+public abstract class Entry<T> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +25,7 @@ public abstract class Item<T> {
 	/**
 	 * 
 	 */
-	public Item() {
+	public Entry() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -33,7 +33,7 @@ public abstract class Item<T> {
 	 * @param name
 	 * @param data
 	 */
-	public Item(String name, T data) {
+	public Entry(String name, T data) {
 		this.name = name;
 		//this.data = data;
 	}

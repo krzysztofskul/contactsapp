@@ -13,6 +13,7 @@ class SubjectDemoGeneratorTest {
 
 	@Autowired
 	private SubjectDemoGenerator<Subject> subjectDemoGenerator;
+	@Autowired
 	
 	@Test
 	void testInitDataAndReturn() {

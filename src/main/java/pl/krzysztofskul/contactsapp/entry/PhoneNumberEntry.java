@@ -1,4 +1,4 @@
-package pl.krzysztofskul.contactsapp.item;
+package pl.krzysztofskul.contactsapp.entry;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import pl.krzysztofskul.contactsapp.contact.Contact;
 
 @Entity
-public class PhoneNumber<T> extends Item<String> {
+public class PhoneNumberEntry<T> extends Entry<String> {
 	
 	@ManyToOne
 	private Contact contact;
@@ -19,7 +19,7 @@ public class PhoneNumber<T> extends Item<String> {
 	/**
 	 * 
 	 */
-	public PhoneNumber() {
+	public PhoneNumberEntry() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,9 +27,9 @@ public class PhoneNumber<T> extends Item<String> {
 	 * @param name
 	 * @param data
 	 */
-	public PhoneNumber(String name, String data) {
+	public PhoneNumberEntry(String name, String data) {
 		super(name, data);
-		// TODO Auto-generated constructor stub
+		this.data = data;
 	}
 
 	/**

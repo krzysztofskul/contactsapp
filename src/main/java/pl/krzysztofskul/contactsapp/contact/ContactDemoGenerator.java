@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.thedeanda.lorem.LoremIpsum;
 
-import pl.krzysztofskul.contactsapp.item.AddressItem;
-import pl.krzysztofskul.contactsapp.item.Email;
-import pl.krzysztofskul.contactsapp.item.PhoneNumber;
+import pl.krzysztofskul.contactsapp.entry.AddressEntry;
+import pl.krzysztofskul.contactsapp.entry.EmailEntry;
+import pl.krzysztofskul.contactsapp.entry.PhoneNumberEntry;
 import pl.krzysztofskul.contactsapp.subject.Subject;
 import pl.krzysztofskul.contactsapp.subject.SubjectDemoGenerator;
 import pl.krzysztofskul.sensit.smnsh.init.InitDataGenerator;
@@ -46,17 +46,17 @@ public class ContactDemoGenerator implements InitDataGenerator<Contact> {
 
 	private Contact getDemoContact(Subject subject) {
 		Contact contact = new Contact();
-		contact.setEmails(getDemoEmails());
-		contact.setPhoneNumbers(getDemoPhoneNumbers());
-		contact.setAddresses(getDemoAddressItems());		
+		contact.setEmailEntries(getDemoEmails());
+		contact.setPhoneNumberEntries(getDemoPhoneNumbers());
+		contact.setAddressesEntryList(getDemoAddressItems());		
 		contact.setSubject(subject);
 		return contact;
 	}
 
-	private List<AddressItem> getDemoAddressItems() {
-		List<AddressItem> demoAddressItemList = new ArrayList<AddressItem>();
-		demoAddressItemList.add(new AddressItem("Main address", getDemoAddress()));
-		demoAddressItemList.add(new AddressItem("Second address", getDemoAddress()));
+	private List<AddressEntry> getDemoAddressItems() {
+		List<AddressEntry> demoAddressItemList = new ArrayList<AddressEntry>();
+		demoAddressItemList.add(new AddressEntry("Main address", getDemoAddress()));
+		demoAddressItemList.add(new AddressEntry("Second address", getDemoAddress()));
 		return demoAddressItemList;
 
 	}
@@ -65,18 +65,18 @@ public class ContactDemoGenerator implements InitDataGenerator<Contact> {
 		return new Address(loremIpsum.getCountry(), loremIpsum.getZipCode(), loremIpsum.getCity(), loremIpsum.getName(), String.valueOf(random.nextInt(99)+1), String.valueOf(random.nextInt(99)+1));
 	}
 
-	private List<Email> getDemoEmails() {
-		List<Email> demoEmailList = new ArrayList<Email>();
-		demoEmailList.add(new Email<String>("Private email", "private@example.com"));
-		demoEmailList.add(new Email<String>("Business email", "office@example.com"));
+	private List<EmailEntry> getDemoEmails() {
+		List<EmailEntry> demoEmailList = new ArrayList<EmailEntry>();
+		demoEmailList.add(new EmailEntry<String>("Private email", "private@example.com"));
+		demoEmailList.add(new EmailEntry<String>("Business email", "office@example.com"));
 		return demoEmailList;
 	}
 	
-	private List<PhoneNumber> getDemoPhoneNumbers() {
-		List<PhoneNumber> demoPhoneNumberList = new ArrayList<PhoneNumber>();
-		demoPhoneNumberList.add(new PhoneNumber<String>("Private phone no.", loremIpsum.getPhone()));
-		demoPhoneNumberList.add(new PhoneNumber<String>("Private mobile no.", loremIpsum.getPhone()));
-		demoPhoneNumberList.add(new PhoneNumber<String>("Business phone no.", loremIpsum.getPhone()));
+	private List<PhoneNumberEntry> getDemoPhoneNumbers() {
+		List<PhoneNumberEntry> demoPhoneNumberList = new ArrayList<PhoneNumberEntry>();
+		demoPhoneNumberList.add(new PhoneNumberEntry<String>("Private phone no.", loremIpsum.getPhone()));
+		demoPhoneNumberList.add(new PhoneNumberEntry<String>("Private mobile no.", loremIpsum.getPhone()));
+		demoPhoneNumberList.add(new PhoneNumberEntry<String>("Business phone no.", loremIpsum.getPhone()));
 		return demoPhoneNumberList;
 	}
 

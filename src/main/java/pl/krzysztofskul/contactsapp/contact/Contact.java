@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,11 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
-//import javax.persistence.OneToMany;
-
-import pl.krzysztofskul.contactsapp.item.AddressItem;
-import pl.krzysztofskul.contactsapp.item.Email;
-import pl.krzysztofskul.contactsapp.item.PhoneNumber;
+import pl.krzysztofskul.contactsapp.entry.AddressEntry;
+import pl.krzysztofskul.contactsapp.entry.EmailEntry;
+import pl.krzysztofskul.contactsapp.entry.PhoneNumberEntry;
 import pl.krzysztofskul.contactsapp.subject.Subject;
 
 @Entity
@@ -28,18 +27,18 @@ public class Contact {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "subject_id", referencedColumnName = "id")
 	private Subject subject;
 	
-	@OneToMany(mappedBy = "contact")
-	private List<PhoneNumber> phoneNumbers = new ArrayList();
+	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+	private List<PhoneNumberEntry> phoneNumberEntries = new ArrayList();
 	
-	@OneToMany(mappedBy = "contact")
-	private List<Email> emails = new ArrayList();
+	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+	private List<EmailEntry> emailEntries = new ArrayList();
 	
-	@OneToMany(mappedBy = "contact")
-	private List<AddressItem> addresses = new ArrayList();
+	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+	private List<AddressEntry> addressesEntryList = new ArrayList<AddressEntry>();
 
 	/**
 	 * 
@@ -50,15 +49,15 @@ public class Contact {
 
 	/**
 	 * @param subject
-	 * @param phoneNumbers
-	 * @param emails
-	 * @param addresses
+	 * @param phoneNumberEntries
+	 * @param emailEntries
+	 * @param addressesEntryList
 	 */
-	public Contact(Subject subject, List<PhoneNumber> phoneNumbers, List<Email> emails, List<AddressItem> addresses) {
+	public Contact(Subject subject, List<PhoneNumberEntry> phoneNumberEntries, List<EmailEntry> emailEntries, List<AddressEntry> addressesEntryList) {
 		this.subject = subject;
-		this.phoneNumbers = phoneNumbers;
-		this.emails = emails;
-		this.addresses = addresses;
+		this.phoneNumberEntries = phoneNumberEntries;
+		this.emailEntries = emailEntries;
+		this.addressesEntryList = addressesEntryList;
 	}
 
 	/**
@@ -90,45 +89,57 @@ public class Contact {
 	}
 
 	/**
-	 * @return the phoneNumbers
+	 * @return the phoneNumberEntries
 	 */
-	public List<PhoneNumber> getPhoneNumbers() {
-		return phoneNumbers;
+	public List<PhoneNumberEntry> getPhoneNumberEntries() {
+		return phoneNumberEntries;
 	}
 
 	/**
-	 * @param phoneNumbers the phoneNumbers to set
+	 * @param phoneNumberEntries the phoneNumberEntries to set
 	 */
-	public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
-		this.phoneNumbers = phoneNumbers;
+	public void setPhoneNumberEntries(List<PhoneNumberEntry> phoneNumberEntries) {
+		this.phoneNumberEntries = phoneNumberEntries;
+		for (PhoneNumberEntry phoneNumberEntry : phoneNumberEntries) {
+			phoneNumberEntry.setContact(this);
+		}
 	}
 
 	/**
-	 * @return the emails
+	 * @return the emailEntries
 	 */
-	public List<Email> getEmails() {
-		return emails;
+	public List<EmailEntry> getEmailEntries() {
+		return emailEntries;
 	}
 
 	/**
-	 * @param emails the emails to set
+	 * @param emailEntries the emailEntries to set
 	 */
-	public void setEmails(List<Email> emails) {
-		this.emails = emails;
+	public void setEmailEntries(List<EmailEntry> emailEntries) {
+		this.emailEntries = emailEntries;
+		for (EmailEntry emailEntry : emailEntries) {
+			emailEntry.setContact(this);
+		}
 	}
 
 	/**
-	 * @return the addresses
+	 * @return the addressesEntryList
 	 */
-	public List<AddressItem> getAddresses() {
-		return addresses;
+	public List<AddressEntry> getAddressesEntryList() {
+		return addressesEntryList;
 	}
 
 	/**
-	 * @param addresses the addresses to set
+	 * @param addressesEntryList the addressesEntryList to set
 	 */
-	public void setAddresses(List<AddressItem> addresses) {
-		this.addresses = addresses;
+	public void setAddressesEntryList(List<AddressEntry> addressesEntryList) {
+		this.addressesEntryList = addressesEntryList;
+		for (AddressEntry addressEntry : addressesEntryList) {
+			addressEntry.setContact(this);
+		}
 	}
+
+
+
 	
 }

@@ -1,12 +1,13 @@
 package pl.krzysztofskul.contactsapp.contact;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import pl.krzysztofskul.contactsapp.item.AddressItem;
+import pl.krzysztofskul.contactsapp.entry.AddressEntry;
 
 @Entity
 public class Address {
@@ -28,7 +29,7 @@ public class Address {
 	private String flatNo;
 	
 	@OneToOne(mappedBy = "address")
-	private AddressItem addressItem;
+	private AddressEntry addressEntry;
 	
 	public Address() {
 		//Auto-generated constructor stub
@@ -116,17 +117,17 @@ public class Address {
 	}
 
 	/**
-	 * @return the addressItem
+	 * @return the addressEntry
 	 */
-	public AddressItem getAddressItem() {
-		return addressItem;
+	public AddressEntry getAddressItem() {
+		return addressEntry;
 	}
 
 	/**
-	 * @param addressItem the addressItem to set
+	 * @param addressEntry the addressEntry to set
 	 */
-	public void setAddressItem(AddressItem addressItem) {
-		this.addressItem = addressItem;
+	public void setAddressItem(AddressEntry addressEntry) {
+		this.addressEntry = addressEntry;
 	}
 	
 }

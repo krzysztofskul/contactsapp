@@ -1,5 +1,6 @@
-package pl.krzysztofskul.contactsapp.item;
+package pl.krzysztofskul.contactsapp.entry;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,19 +16,19 @@ import pl.krzysztofskul.contactsapp.contact.Address;
 import pl.krzysztofskul.contactsapp.contact.Contact;
 
 @Entity
-public class AddressItem extends Item<Address> {
+public class AddressEntry extends Entry<Address> {
 	
 	@ManyToOne
 	private Contact contact;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private Address address;
 	
 	/**
 	 * 
 	 */
-	public AddressItem() {
+	public AddressEntry() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -35,9 +36,9 @@ public class AddressItem extends Item<Address> {
 	 * @param name
 	 * @param data
 	 */
-	public AddressItem(String name, Address data) {
+	public AddressEntry(String name, Address data) {
 		super(name, data);
-		// TODO Auto-generated constructor stub
+		this.address = data;
 	}
 
 	/**
