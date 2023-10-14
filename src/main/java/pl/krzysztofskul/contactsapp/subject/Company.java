@@ -1,11 +1,16 @@
 package pl.krzysztofskul.contactsapp.subject;
 
+import javax.persistence.Entity;
+import javax.persistence.Transient;
+
 import pl.krzysztofskul.contactsapp.contact.Address;
 
+@Entity
 public class Company extends Subject {
 
 	private String name;
 
+	@Transient
 	private Address address;
 
 	/**

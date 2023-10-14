@@ -1,5 +1,8 @@
 package pl.krzysztofskul.contactsapp.subject;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Person extends Subject {
 
 	private String nickname;

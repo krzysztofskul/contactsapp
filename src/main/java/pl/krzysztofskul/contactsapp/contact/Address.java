@@ -1,6 +1,19 @@
 package pl.krzysztofskul.contactsapp.contact;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import pl.krzysztofskul.contactsapp.item.AddressItem;
+
+@Entity
 public class Address {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
 	private String country;
 	
@@ -13,6 +26,9 @@ public class Address {
 	private String streetNo;
 	
 	private String flatNo;
+	
+	@OneToOne(mappedBy = "address")
+	private AddressItem addressItem;
 	
 	public Address() {
 		//Auto-generated constructor stub
@@ -33,6 +49,22 @@ public class Address {
 		this.streetName = streetName;
 		this.streetNo = streetNo;
 		this.flatNo = flatNo;
+	}
+
+	
+	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCountry() {
@@ -82,7 +114,19 @@ public class Address {
 	public void setFlatNo(String flatNo) {
 		this.flatNo = flatNo;
 	}
-	
-	
+
+	/**
+	 * @return the addressItem
+	 */
+	public AddressItem getAddressItem() {
+		return addressItem;
+	}
+
+	/**
+	 * @param addressItem the addressItem to set
+	 */
+	public void setAddressItem(AddressItem addressItem) {
+		this.addressItem = addressItem;
+	}
 	
 }

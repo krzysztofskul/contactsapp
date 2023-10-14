@@ -55,8 +55,8 @@ public class ContactDemoGenerator implements InitDataGenerator<Contact> {
 
 	private List<AddressItem> getDemoAddressItems() {
 		List<AddressItem> demoAddressItemList = new ArrayList<AddressItem>();
-		demoAddressItemList.add(new AddressItem<Address>("Main address", getDemoAddress()));
-		demoAddressItemList.add(new AddressItem<Address>("Second address", getDemoAddress()));
+		demoAddressItemList.add(new AddressItem("Main address", getDemoAddress()));
+		demoAddressItemList.add(new AddressItem("Second address", getDemoAddress()));
 		return demoAddressItemList;
 
 	}
