@@ -27,7 +27,7 @@ public class ContactController {
 
 	@GetMapping("/new")
 	public ModelAndView getNew(
-				@RequestParam(name = "backToPage", required = true) String backToPage
+				@RequestParam(name = "backToPage", required = false) String backToPage
 			) {
 		Contact contact = new Contact();
 		ModelAndView modelAndView = new ModelAndView();
@@ -36,14 +36,14 @@ public class ContactController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/edit/{id}")
+	@GetMapping("/{id}")
 	public ModelAndView getEdit(
 				@PathVariable Long id,
-				@RequestParam(name = "backToPage", required = true) String backToPage
+				@RequestParam(name = "backToPage", required = false) String backToPage
 			) {
 		Contact contact = contactService.loadById(id);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName(backToPage);
+		modelAndView.setViewName("contacts/id");
 		modelAndView.addObject(contact);
 		return modelAndView;
 	}
@@ -64,12 +64,12 @@ public class ContactController {
 	
 	@GetMapping("/all")
 	public ModelAndView getAll(
-				@RequestParam(name = "backToPage", required = true) String backToPage
+				@RequestParam(name = "backToPage", required = false) String backToPage
 			) {
 		ModelAndView modelAndView = new ModelAndView();
 		List<Contact> contactList = contactService.loadAll();
 		modelAndView.addObject(contactList);
-		modelAndView.setViewName(backToPage);
+		modelAndView.setViewName("contacts/all");
 		return modelAndView;
 	}
 	

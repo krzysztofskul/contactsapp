@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+	lang="en"
+>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>contactsapp</title>
+	
+	<!-- Bootstrap 4.6 CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="card" th:with="contactCategory = ${contact.subject.class.simpleName}">
+		
+			<div class="card-header text-center">
+				<svg th:if="${contactCategory == 'Person'}" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="gray" class="bi bi-person-vcard" viewBox="0 0 16 16">
+					<path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+					<path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
+				</svg>
+				<svg th:if="${contactCategory == 'Company'}" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="gray" class="bi bi-person-vcard" viewBox="0 0 16 16">
+					<path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"/>
+					<path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V1Zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3V1Z"/>
+				</svg>
+			</div>
+			
+			<div class="card-body">
+				<!-- NAME -->
+				<div class="row">
+					<div class="col-2">
+						<!-- 
+						<span th:text="${contact.id}"></span>
+						 -->
+						<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+						  <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+						  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+						</svg>
+					</div>
+					<div class="col-10">
+						<div class="row" th:if="${contactCategory == 'Company'}">
+						  <div class="col">
+						    <input type="text" class="form-control" th:placeholder="${contact.subject?.name} ?  ${contact.subject?.name}">
+						  </div>
+						</div>
+						<div class="row" th:if="${contactCategory == 'Person'}">
+						  <div class="col">
+						    <input type="text" class="form-control" th:placeholder="${contact.subject?.nameFirst} ?  ${contact.subject?.nameFirst}">
+						  </div>
+						  <div class="col">
+						    <input type="text" class="form-control" th:placeholder="${contact.subject?.nameFirst} ?  ${contact.subject?.nameLast}">
+						  </div>
+						</div>
+					</div>
+				</div>
+				<!-- ADDRESS -->
+				<hr>
+				<div th:each="addressEntry : ${contact.addressEntryList}" class="row">
+					<div class="col-2">
+						<input type="text" class="form-control" th:placeholder="${addressEntry?.name} ?  ${addressEntry?.name}">
+					</div>
+					<div class="col-4">
+					  <input type="text" class="form-control" th:placeholder="${addressEntry?.address?.country} ?  ${addressEntry?.address?.country}">
+					</div>
+					<div class="col-2">
+					  <input type="text" class="form-control text-right" th:placeholder="${addressEntry?.address?.zipCode} ?  ${addressEntry?.address?.zipCode}">
+					</div>
+					<div class="col-4">
+					  <input type="text" class="form-control" th:placeholder="${addressEntry?.address?.city} ?  ${addressEntry?.address?.city}">
+					</div>
+					<div class="col-2"></div>
+					<div class="col-8">
+					  <input type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetName} ?  ${addressEntry?.address?.streetName}">
+					</div>
+					<div class="col-1">
+					  <input type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetNo} ?  ${addressEntry?.address?.streetNo}">
+					</div>
+					<div class="col-1">
+					  <input type="text" class="form-control" th:placeholder="${addressEntry?.address?.flatNo} ?  ${addressEntry?.address?.flatNo}">
+					</div>
+				</div>
+				<div class="btn btn-sm btn-outline-success">+</div>
+				<!-- E-MAIL -->
+				<hr>
+				<div th:each="emailEntry : ${contact.emailEntries}" class="row">
+					<div class="col-2">
+						<input type="text" class="form-control" th:placeholder="${emailEntry?.name} ?  ${emailEntry?.name}">
+					</div>
+					<div class="col-10">
+					  <input type="text" class="form-control" th:placeholder="${emailEntry?.data} ?  ${emailEntry?.data}">
+					</div>
+				</div>
+				<div class="btn btn-sm btn-outline-success">+</div>
+				<!-- PHONE NO. -->
+				<hr>
+				<div th:each="phoneNumberEntry : ${contact.phoneNumberEntries}" class="row">
+					<div class="col-2">
+						<input type="text" class="form-control" th:placeholder="${phoneNumberEntry?.name} ?  ${phoneNumberEntry?.name}">
+					</div>
+					<div class="col-10">
+					  <input type="text" class="form-control" th:placeholder="${phoneNumberEntry?.data} ?  ${phoneNumberEntry?.data}">
+					</div>
+				</div>
+				<div class="btn btn-sm btn-outline-success">+</div>
+				
+			</div>		
+			
+			<div class="card-footer"></div>
+		
+		</div>
+
+    </div>
+
+	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
