@@ -14,16 +14,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import pl.krzysztofskul.contactsapp.subject.Company;
+import pl.krzysztofskul.contactsapp.subject.Person;
+import pl.krzysztofskul.contactsapp.subject.Subject;
+import pl.krzysztofskul.contactsapp.subject.SubjectService;
+
 @Controller
 @RequestMapping("/contacts")
 public class ContactController {
 
 	private ContactService contactService;
+	private SubjectService subjectService;
 
 	@Autowired
-	public ContactController(ContactService contactService) {
+	public ContactController(ContactService contactService, SubjectService subjectService) {
 		this.contactService = contactService;
+		this.subjectService = subjectService;
 	}
+
 
 	@GetMapping("/new")
 	public ModelAndView getNew(
@@ -48,17 +56,44 @@ public class ContactController {
 		return modelAndView;
 	}
 	
-	@PostMapping("/new")
+	@PostMapping("/{id}")
 	public ModelAndView postNew(
-			@RequestParam(name = "backToPage", required = true) String backToPage,
+			@PathVariable(required = false) Long contactId,
+			@RequestParam(name = "backToPage", required = false) String backToPage,
+			@RequestParam(name = "subjectId", required = false) Long subjectId,
+			@RequestParam(name = "subjectName", required = false) String subjectName,
+			@RequestParam(name = "subjectNameFirst", required = false) String subjectNameFirst,
+			@RequestParam(name = "subjectNameLast", required = false) String subjectNameLast,
 			@ModelAttribute("contact") @Validated Contact contact, BindingResult result
 			) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName(backToPage);
+		
 		if (result.hasErrors()) {
 			return modelAndView;
 		}
-		contactService.save(contact);
+		
+		if (subjectId != null) {
+			Subject subject = subjectService.loadById(subjectId);
+			if (subject.getClass().getName().contains("Company")) {
+				Company company = (Company) subject;
+				company.setName(subjectName);
+				contact.setSubject(company);
+			}
+			if (subject.getClass().getName().contains("Person")) {
+				Person person = (Person) subject;
+				person.setNameFirst(subjectNameFirst);
+				person.setNameLast(subjectNameLast);
+				contact.setSubject(person);
+			}
+			
+		}
+		
+		contact = contactService.save(contact);
+		if (backToPage == null) {
+			backToPage = "contacts/"+contact.getId();
+		}
+		
+		modelAndView.setViewName("redirect:/"+backToPage);
 		return modelAndView;
 	}
 	

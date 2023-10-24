@@ -22,6 +22,9 @@ public abstract class Subject {
 	@OneToOne(mappedBy = "subject")
 	private Contact contact;
 	
+	public Subject() {
+	}
+
 	/**
 	 * @return the id
 	 */

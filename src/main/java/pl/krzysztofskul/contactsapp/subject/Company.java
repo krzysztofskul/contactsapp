@@ -13,11 +13,7 @@ public class Company extends Subject {
 	@Transient
 	private Address address;
 
-	/**
-	 * 
-	 */
 	public Company() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**

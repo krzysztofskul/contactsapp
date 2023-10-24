@@ -13,11 +13,7 @@ public class Person extends Subject {
 	
 	private String gender;
 
-	/**
-	 * 
-	 */
 	public Person() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
