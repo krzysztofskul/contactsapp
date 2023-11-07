@@ -6,13 +6,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import pl.krzysztofskul.contactsapp.contact.Contact;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@JsonTypeInfo(
+	    use = JsonTypeInfo.Id.NAME,
+	    include = JsonTypeInfo.As.PROPERTY,
+	    property = "type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Person.class, name = "Person"),
+
+    @JsonSubTypes.Type(value = Company.class, name = "Company") }
+)
 public abstract class Subject {
 
 	@Id
