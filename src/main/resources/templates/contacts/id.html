@@ -50,7 +50,7 @@
 							<input type="hidden" class="form-control" th:placeholder="${contact?.subject?.id} ?  ${contact?.subject?.id}" th:value="${contact?.subject?.id}" th:name="subjectId">
 							<div class="row" th:if="${contactCategory == 'Company'}">
 							  <div class="col">							  	
-							    <input type="text" class="form-control" th:placeholder="${contact?.subject?.name} ?  ${contact?.subject?.name}" th:value="${contact?.subject?.name}" th:name="subjectName">
+							    <input type="text" class="form-control" th:placeholder="${contact?.subject?.name} ?  ${contact?.subject?.name}" th:value="${contact?.subject?.name}" th:name="subjectName"/>
 							  </div>
 							</div>
 							<div class="row" th:if="${contactCategory == 'Person'}">
@@ -66,28 +66,29 @@
 					<!-- ADDRESS -->
 					<hr>
 					<div th:each="addressEntry : ${contact.addressEntryList}" class="row addressEntry">
-						<input th:id="'addressId_' + ${addressEntry?.id}" name="addressId" th:value="${addressEntry?.id}" type="hidden"/>
+						<input th:id="'addressEntryId_' + ${addressEntry?.id}" name="addressEntryId" th:value="${addressEntry?.id}" type="hidden"/>
+						<input th:id="'addressId_' + ${addressEntry?.address?.id}" name="addressId" th:value="${addressEntry?.address.id}" type="hidden"/>
 						<div class="col-2">
-							<input th:id="'addressName_' + ${addressEntry?.id}" name="addressName" type="text" class="form-control" th:placeholder="${addressEntry?.name} ?  ${addressEntry?.name}">
+							<input th:id="'addressName_' + ${addressEntry?.id}" name="addressName" type="text" class="form-control" th:placeholder="${addressEntry?.name} ?  ${addressEntry?.name}" th:value="${addressEntry?.name} ?  ${addressEntry?.name}"/>
 						</div>
 						<div class="col-4">
-						  <input th:id="'addressCountry_' + ${addressEntry?.address?.country}" name="addressCountry" type="text" class="form-control" th:placeholder="${addressEntry?.address?.country} ?  ${addressEntry?.address?.country}">
+						  <input th:id="'addressCountry_' + ${addressEntry?.address?.country}" name="addressCountry" type="text" class="form-control" th:placeholder="${addressEntry?.address?.country} ?  ${addressEntry?.address?.country}" th:value="${addressEntry?.address?.country} ?  ${addressEntry?.address?.country}"/>
 						</div>
 						<div class="col-2">
-						  <input th:id="'addressZipCode_' + ${addressEntry?.address?.zipCode}" name="addressZipCode" type="text" class="form-control text-right" th:placeholder="${addressEntry?.address?.zipCode} ?  ${addressEntry?.address?.zipCode}">
+						  <input th:id="'addressZipCode_' + ${addressEntry?.address?.zipCode}" name="addressZipCode" type="text" class="form-control text-right" th:placeholder="${addressEntry?.address?.zipCode} ?  ${addressEntry?.address?.zipCode}" th:value="${addressEntry?.address?.zipCode} ?  ${addressEntry?.address?.zipCode}">
 						</div>
 						<div class="col-4">
-						  <input th:id="'addressCity_' + ${addressEntry?.address?.city}" name="addressCity" type="text" class="form-control" th:placeholder="${addressEntry?.address?.city} ?  ${addressEntry?.address?.city}">
+						  <input th:id="'addressCity_' + ${addressEntry?.address?.city}" name="addressCity" type="text" class="form-control" th:placeholder="${addressEntry?.address?.city} ?  ${addressEntry?.address?.city}" th:value="${addressEntry?.address?.city} ?  ${addressEntry?.address?.city}">
 						</div>
 						<div class="col-2"></div>
 						<div class="col-8">
-						  <input th:id="'addressStreetName_' + ${addressEntry?.address?.streetName}" name="addressStreetName" type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetName} ?  ${addressEntry?.address?.streetName}">
+						  <input th:id="'addressStreetName_' + ${addressEntry?.address?.streetName}" name="addressStreetName" type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetName} ?  ${addressEntry?.address?.streetName}" th:value="${addressEntry?.address?.streetName} ?  ${addressEntry?.address?.streetName}">
 						</div>
 						<div class="col-1">
-						  <input th:id="'addressStreetNo_' + ${addressEntry?.address?.streetNo}" name="addressStreetNo" type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetNo} ?  ${addressEntry?.address?.streetNo}">
+						  <input th:id="'addressStreetNo_' + ${addressEntry?.address?.streetNo}" name="addressStreetNo" type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetNo} ?  ${addressEntry?.address?.streetNo}" th:value="${addressEntry?.address?.streetNo} ?  ${addressEntry?.address?.streetNo}">
 						</div>
 						<div class="col-1">
-						  <input th:id="'addressFlatNo _' + ${addressEntry?.address?.flatNo}" name="addressFlatNo" type="text" class="form-control" th:placeholder="${addressEntry?.address?.flatNo} ?  ${addressEntry?.address?.flatNo}">
+						  <input th:id="'addressFlatNo _' + ${addressEntry?.address?.flatNo}" name="addressFlatNo" type="text" class="form-control" th:placeholder="${addressEntry?.address?.flatNo} ?  ${addressEntry?.address?.flatNo}" th:value="${addressEntry?.address?.flatNo} ?  ${addressEntry?.address?.flatNo}">
 						</div>
 					</div>
 					<div class="btn btn-sm btn-outline-success" id="btn-add-address">+</div>

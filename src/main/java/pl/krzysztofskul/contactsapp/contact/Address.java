@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import pl.krzysztofskul.contactsapp.entry.AddressEntry;
 
 @Entity
@@ -27,9 +29,7 @@ public class Address {
 	private String streetNo;
 	
 	private String flatNo;
-	
-	@OneToOne(mappedBy = "address")
-	private AddressEntry addressEntry;
+
 	
 	public Address() {
 		//Auto-generated constructor stub
@@ -116,18 +116,5 @@ public class Address {
 		this.flatNo = flatNo;
 	}
 
-	/**
-	 * @return the addressEntry
-	 */
-	public AddressEntry getAddressItem() {
-		return addressEntry;
-	}
-
-	/**
-	 * @param addressEntry the addressEntry to set
-	 */
-	public void setAddressItem(AddressEntry addressEntry) {
-		this.addressEntry = addressEntry;
-	}
 	
 }

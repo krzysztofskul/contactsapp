@@ -6,6 +6,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import pl.krzysztofskul.contactsapp.contact.Address;
 import pl.krzysztofskul.contactsapp.contact.Contact;
 
@@ -13,6 +15,7 @@ import pl.krzysztofskul.contactsapp.contact.Contact;
 public class AddressEntry extends Entry<Address> {
 	
 	@ManyToOne
+	@JsonIgnore
 	private Contact contact;
 	
 	@OneToOne(cascade = CascadeType.ALL)

@@ -18,8 +18,6 @@ public class ContactControllerRest {
 	
 	private ContactService contactService;
 	
-	
-	
     /**
 	 * @param contactService
 	 */
@@ -37,5 +35,4 @@ public class ContactControllerRest {
         return contactService.save(contact);
     }
 
-	
 }

@@ -15,13 +15,12 @@ $(document).ready(function() {
 	
 	function getContact() {
 		return {
-				id: $("#contactId").attr("value"),
-				//addressEntryList: getAddressArray(),
-				subject: {type: "Company", name: "test", id: "1"}
+				id: getId(),
+				addressEntryList: getAddressArray(),
+				//subject: {type: "Company", name: "test", id: "1"}
+				subject: getSubject()
 			}
 		}
-	
-	var addressArray;
 	
 	var testDiv = '<div class="border">TEST</div>';
 	function testFunction() {
@@ -29,19 +28,43 @@ $(document).ready(function() {
 		console.log(getContact());
 	}
 	
+	function getId() {
+		return $("#contactId").attr("value");
+	}
+	
+	function getSubject() {
+		var type;
+		if ($("input[name='subjectName']").val() == undefined) {
+			type = "Person"
+		} else {
+			type = "Company"
+		}
+		return {
+			type: type,
+			id: $("input[name='subjectId']").val(), 
+			name: $("input[name='subjectName']").val(),
+			nameFirst: $("input[name='subjectNameFirst']").val(),
+			nameLast: $("input[name='subjectNameLast']").val()
+		}
+	}
+	
 	function getAddressArray() {
 		var arrayDivAddressEntry = $(".addressEntry");
 		var addressEntryArray = [];
+
 		arrayDivAddressEntry.each(function() {
 			var AddressEntry = new Object();
+			var Address = new Object();
 			AddressEntry.name = $(this).find("input[name='addressName']").val();
-			AddressEntry.id = $(this).find("input[name='addressId']").attr("value");
-/*			Address.country = $(this).find("input[name='addressCountry']").val();
+			AddressEntry.id = $(this).find("input[name='addressEntryId']").val();
+			Address.id = $(this).find("input[name='addressId']").val();
+			Address.country = $(this).find("input[name='addressCountry']").val();
 			Address.zipCode = $(this).find("input[name='addressZipCode']").val();
 			Address.city = $(this).find("input[name='addressCity']").val();
 			Address.streetName = $(this).find("input[name='addressStreetName']").val();
 			Address.streetNo = $(this).find("input[name='addressStreetNo']").val();
-			Address.flatNo = $(this).find("input[name='addressFlatNo']").val();*/
+			Address.flatNo = $(this).find("input[name='addressFlatNo']").val();
+			AddressEntry.address = Address;
 			addressEntryArray.push(AddressEntry);
 		});
 		return addressEntryArray;
