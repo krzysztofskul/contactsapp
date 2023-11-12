@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>pl.krzysztofskul</groupId>
 	<artifactId>contactsapp</artifactId>
-	<version>0.0.9-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 	<name>contactsapp</name>
-	<description></description>
+	<description>First test and demo version with main functionalities.</description>
 	<properties>
 		<java.version>8</java.version>
 	</properties>
