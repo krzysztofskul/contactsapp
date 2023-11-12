@@ -31,11 +31,11 @@ public class Contact {
 	
 	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<PhoneNumberEntry> phoneNumberEntries = new ArrayList();
+	private List<PhoneNumberEntry> phoneNumberEntries = new ArrayList<PhoneNumberEntry>();
 	
 	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<EmailEntry> emailEntries = new ArrayList();
+	private List<EmailEntry> emailEntries = new ArrayList<EmailEntry>();
 	
 	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)

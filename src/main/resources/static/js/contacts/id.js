@@ -17,7 +17,8 @@ $(document).ready(function() {
 		return {
 				id: getId(),
 				addressEntryList: getAddressArray(),
-				//subject: {type: "Company", name: "test", id: "1"}
+				phoneNumberEntries: getPhoneNumberEntries(),
+				emailEntries: getEmailEntries(),
 				subject: getSubject()
 			}
 		}
@@ -55,8 +56,8 @@ $(document).ready(function() {
 		arrayDivAddressEntry.each(function() {
 			var AddressEntry = new Object();
 			var Address = new Object();
+			AddressEntry.id = $(this).find("input[name='addressEntryId']").val();			
 			AddressEntry.name = $(this).find("input[name='addressName']").val();
-			AddressEntry.id = $(this).find("input[name='addressEntryId']").val();
 			Address.id = $(this).find("input[name='addressId']").val();
 			Address.country = $(this).find("input[name='addressCountry']").val();
 			Address.zipCode = $(this).find("input[name='addressZipCode']").val();
@@ -68,6 +69,34 @@ $(document).ready(function() {
 			addressEntryArray.push(AddressEntry);
 		});
 		return addressEntryArray;
+	}
+	
+	function getPhoneNumberEntries() {
+		var arrayDivPhoneNumberEntries = $(".phoneNumberEntry");
+		var phoneNumberEntryArray = [];
+
+		arrayDivPhoneNumberEntries.each(function() {
+			var PhoneNumberEntry = new Object();
+			PhoneNumberEntry.id = $(this).find("input[name='phoneNumberEntryId']").val();			
+			PhoneNumberEntry.name = $(this).find("input[name='phoneNumberEntryName']").val();
+			PhoneNumberEntry.data = $(this).find("input[name='phoneNumberEntryData']").val();
+			phoneNumberEntryArray.push(PhoneNumberEntry);
+		});
+		return phoneNumberEntryArray;
+	}
+	
+	function getEmailEntries() {
+		var arrayDivEmailEntries = $(".emailEntry");
+		var emailEntryArray = [];
+
+		arrayDivEmailEntries.each(function() {
+			var EmailEntry = new Object();
+			EmailEntry.id = $(this).find("input[name='emailEntryId']").val();			
+			EmailEntry.name = $(this).find("input[name='emailEntryName']").val();
+			EmailEntry.data = $(this).find("input[name='emailEntryData']").val();
+			emailEntryArray.push(EmailEntry);
+		});
+		return emailEntryArray;
 	}
 	
 	var newAddressRow = getAddressRow();
@@ -102,12 +131,13 @@ $(document).ready(function() {
 	}
 		
 	function getNewEmailRow() {
-		return '	<div class="row"> \
+		return '	<div class="row emailEntry"> \
+				<input id="emailId_0" name="emailEntryId" value="0" type="hidden">\
 				<div class="col-2"> \
-					<input type="text" class="form-control" th:placeholder="${emailEntry?.name} ?  ${emailEntry?.name}"> \
+					<input type="text" th:id="emailEntryName_0" name="emailEntryName" class="form-control"> \
 				</div> \
 				<div class="col-10"> \
-				  <input type="text" class="form-control" th:placeholder="${emailEntry?.data} ?  ${emailEntry?.data}"> \
+				  <input type="text" th:id="emailEntryData_0" name="emailEntryData" class="form-control"> \
 				</div> \
 			</div>'
 	} 
@@ -115,15 +145,16 @@ $(document).ready(function() {
 	var newEmailRow = getNewEmailRow();
 	
 	function getNewPhoneNumerRow() {
-		'	<div th:each="phoneNumberEntry : ${contact.phoneNumberEntries}" class="row"> \
+		return '	<div class="row phoneNumberEntry"> \
+				<input id="phoneNumberId_0" name="phoneNumberEntryId" value="0" type="hidden">\
 				<div class="col-2"> \
-					<input type="text" class="form-control" th:placeholder="${phoneNumberEntry?.name} ?  ${phoneNumberEntry?.name}"> \
+					<input type="text" th:id="phoneNumberEntryName_0" name="phoneNumberEntryName" class="form-control"> \
 				</div> \
 				<div class="col-10"> \
-				  <input type="text" class="form-control" th:placeholder="${phoneNumberEntry?.data} ?  ${phoneNumberEntry?.data}"> \
+				  <input type="text" th:id="phoneNumberEntryData_0" name="phoneNumberEntryData" class="form-control"> \
 				</div> \
 			</div>'
-		return 	
+		 	
 	}
 	
 	var newPhoneNumerRow = getNewPhoneNumerRow();
@@ -131,7 +162,6 @@ $(document).ready(function() {
 	function initButtons() {
 		btnAddAddress.on("click", function() {
 			$(this).before(newAddressRow);
-			testFunction();
 		});
 		btnAddEmail.on("click", function() {
 			$(this).before(newEmailRow);
@@ -150,15 +180,6 @@ $(document).ready(function() {
 	}
 	
 	function ajaxSend() {
-/*		$.post(
-
-			"/restapi/contacts/"+Contact.id,
-			JSON.stringify(Contact),
-			function(data, status) {
-				alert(data+"\n"+status);
-			}
-		);*/
-		console.log(JSON.stringify(getContact()));
  		$.ajax({
                 url: "/restapi/contacts/"+Contact.id,
                 dataType: "JSON",
@@ -166,22 +187,16 @@ $(document).ready(function() {
                 data: JSON.stringify(getContact()),
                 contentType: "application/json"
             }).done(function () {
-                alert("new foo send to DB!");
+                alert("Contact saved!");
             }).fail(function () {
-                alert("new foo haven't been saved to DB!");
+                alert("Contact haven't been saved to DB!");
             }).always(function () {
-                //alert("saving new foo to DB process finished!");
-                /**
-                 * JS page redirection
-                 */
-                //window.location = "/home";
-                //location.replace("/foos");
+                location.replace("/contacts/"+Contact.id);
+				
             });
 
 		
-	}
-	
-	
+ 	}
 	
 	function initJs() {
 		initButtons();

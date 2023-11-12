@@ -3,12 +3,15 @@ package pl.krzysztofskul.contactsapp.entry;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import pl.krzysztofskul.contactsapp.contact.Contact;
 
 @Entity
 public class PhoneNumberEntry<T> extends Entry<String> {
 	
 	@ManyToOne
+	@JsonIgnore
 	private Contact contact;
 	
 	private String data;
