@@ -18,6 +18,8 @@
 </head>
 <body>
 
+	<div th:replace="./contacts/header" :: header></div>
+
 	<div class="container">
 		
 		<form action="#" th:action="@{/contacts/{contactId} (contactId=${contact?.id})}" th:object="${contact}" method="post">
@@ -144,6 +146,8 @@
 		</form>
 
     </div>
+
+	<div th:replace="./contacts/footer" :: footer></div>
 
 	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -11,12 +11,20 @@
 </head>
 <body>
 
-	<section id="test">
+	<div th:replace="./contacts/header" :: header></div>
+
+	<section id="test" hidden="true">
 		
 		<h5 class="test">TEST CONTACTS APP. START PAGE</h5>
 		<a href="/contacts/all">ALL CONTACTS</a>
 	
 	</section>
+	
+	<div class="container-fluid">
+		<img src="https://picsum.photos/id/20/2400/1200" class="mx-auto d-block img-fluid"></div>
+	</div>
+
+	<div th:replace="./contacts/footer" :: footer></div>
 
 	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

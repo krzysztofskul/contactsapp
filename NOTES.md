@@ -6,10 +6,18 @@
 First test and demo version of the application with main functionalities.
 
 * basic home page
+    * headers and footers for all pages / **done**
+    * home button functionality / **done**
+    * root page functionality ("/")
+    * back buttons to id and all contacts page
 * create new contact
 * edit contact
 * delete contacts
 * README file
+
+##### VER. 0.2
+
+* create css styles
 
 ##### VER. 1.0
 
