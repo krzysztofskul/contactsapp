@@ -45,7 +45,9 @@ public class Contact {
 	 * 
 	 */
 	public Contact() {
-		// TODO Auto-generated constructor stub
+		phoneNumberEntries.add(new PhoneNumberEntry<>("nr tel.", ""));
+		emailEntries.add(new EmailEntry<>("email", ""));
+		addressEntryList.add(new AddressEntry("adres", new Address()));
 	}
 
 	/**

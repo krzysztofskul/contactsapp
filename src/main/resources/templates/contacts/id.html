@@ -24,7 +24,7 @@
 		
 		<form action="#" th:action="@{/contacts/{contactId} (contactId=${contact?.id})}" th:object="${contact}" method="post">
 			
-			<input id="contactId" name="contactId" type="hidden" th:value="${contact.id}"/>
+			<input id="contactId" name="contactId" type="hidden" th:value="${contact?.id}"/>
 			
 			<div class="card" th:with="contactCategory = ${contact?.subject?.class?.simpleName}">
 			

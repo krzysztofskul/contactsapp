@@ -10,7 +10,7 @@ First test and demo version of the application with main functionalities.
     * home button functionality / **done**
     * root page functionality ("/")
     * back buttons to id and all contacts page
-* create new contact
+* create new contact / **done**
 * edit contact
 * delete contacts
 * README file

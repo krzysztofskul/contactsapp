@@ -38,8 +38,10 @@ public class ContactController {
 				@RequestParam(name = "backToPage", required = false) String backToPage
 			) {
 		Contact contact = new Contact();
+		contact.setId(Long.valueOf("0"));
+		contact.setSubject(new Person());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName(backToPage);
+		modelAndView.setViewName("contacts/id");
 		modelAndView.addObject(contact);
 		return modelAndView;
 	}

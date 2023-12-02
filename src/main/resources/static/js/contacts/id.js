@@ -186,8 +186,9 @@ $(document).ready(function() {
                 type: "POST",
                 data: JSON.stringify(getContact()),
                 contentType: "application/json"
-            }).done(function () {
+            }).done(function (data) {
                 alert("Contact saved!");
+                Contact.id = data.id
             }).fail(function () {
                 alert("Contact haven't been saved to DB!");
             }).always(function () {
