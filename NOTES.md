@@ -14,6 +14,7 @@ First test and demo version of the application with main functionalities.
 * edit contact
 * delete contacts
 * README file
+* InitDataGenerator class imported to the class path **done**
 
 ##### VER. 0.2
 

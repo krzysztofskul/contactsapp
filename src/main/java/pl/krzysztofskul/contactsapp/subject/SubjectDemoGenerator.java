@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.thedeanda.lorem.LoremIpsum;
 
-import pl.krzysztofskul.sensit.smnsh.init.InitDataGenerator;
+import pl.krzysztofskul.contactsapp.init.InitDataGenerator;
 
 @Service
 public class SubjectDemoGenerator<Subject> implements InitDataGenerator<Subject> {
@@ -25,7 +25,10 @@ public class SubjectDemoGenerator<Subject> implements InitDataGenerator<Subject>
 		List<Subject> subjectList = new ArrayList<Subject>();
 		subjectList.add((Subject) new Company(loremIpsum.getTitle(1)));
 		subjectList.add((Subject) new Person(null, loremIpsum.getFirstName(), loremIpsum.getLastName(), null));
-		subjectSet = Set.copyOf(subjectList);
+		//subjectSet = Set.copyOf(subjectList);
+		for (Subject subject : subjectList) {
+			subjectSet.add(subject);
+		}
 		return subjectList;
 	}
 

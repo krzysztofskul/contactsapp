@@ -11,9 +11,9 @@ import com.thedeanda.lorem.LoremIpsum;
 import pl.krzysztofskul.contactsapp.entry.AddressEntry;
 import pl.krzysztofskul.contactsapp.entry.EmailEntry;
 import pl.krzysztofskul.contactsapp.entry.PhoneNumberEntry;
+import pl.krzysztofskul.contactsapp.init.InitDataGenerator;
 import pl.krzysztofskul.contactsapp.subject.Subject;
 import pl.krzysztofskul.contactsapp.subject.SubjectDemoGenerator;
-import pl.krzysztofskul.sensit.smnsh.init.InitDataGenerator;
 
 @Service
 public class ContactDemoGenerator implements InitDataGenerator<Contact> {
