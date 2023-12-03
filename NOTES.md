@@ -11,8 +11,8 @@ First test and demo version of the application with main functionalities.
     * root page functionality ("/")
     * back buttons to id and all contacts page
 * create new contact / **done**
-* edit contact
-* delete contacts
+* edit contact / **done**
+* delete contacts / **done**
 * README file
 * InitDataGenerator class imported to the class path **done**
 

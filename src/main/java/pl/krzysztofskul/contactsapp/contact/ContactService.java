@@ -27,4 +27,9 @@ public class ContactService {
 		return contactRepo.findById(id).get();
 	}
 
+	public void deleteById(Long id) {
+		contactRepo.deleteById(id);
+		
+	}
+
 }

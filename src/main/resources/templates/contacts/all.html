@@ -42,7 +42,7 @@
 						  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
 						</svg>
 		        	</a>
-		        	<span class="btn btn-sm btn-outline-danger float-right">X</span>
+		        	<a th:href="@{/contacts/delete/{id}?backToPage={backToPage}(id=${contact.id},backToPage=${#httpServletRequest.requestURI})}" class="btn btn-sm btn-outline-danger float-right">X</a>
 		        </td>
 		        	        
 		      </tr>
@@ -50,7 +50,22 @@
 	      <tfoot>
 	      	<tr>
 	      		<td colspan="5">
-	      			<a href="/contacts/new" class="btn btn-sm btn-outline-success float-right">+</a>
+	      			<a href="/contacts/new?category=person" class="btn btn-sm btn-outline-success float-right">
+						  +
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="gray" class="bi bi-person-vcard" viewBox="0 0 16 16">
+							<path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+							<path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
+						</svg>
+
+				  	</a>
+	      			<a href="/contacts/new?category=company" class="btn btn-sm btn-outline-success float-right">
+						  +
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="gray" class="bi bi-person-vcard" viewBox="0 0 16 16">
+							<path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"/>
+							<path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V1Zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3V1Z"/>
+						</svg>
+
+				  	</a>
 	      		</td>
 	      	</tr>
 	      </tfoot>

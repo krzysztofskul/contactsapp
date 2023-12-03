@@ -35,11 +35,22 @@ public class ContactController {
 
 	@GetMapping("/new")
 	public ModelAndView getNew(
-				@RequestParam(name = "backToPage", required = false) String backToPage
+				@RequestParam(name = "backToPage", required = false) String backToPage,
+				@RequestParam(name = "category", required = true) String companyCategory
 			) {
 		Contact contact = new Contact();
 		contact.setId(Long.valueOf("0"));
-		contact.setSubject(new Person());
+		switch (companyCategory) {
+			case "person": {
+				contact.setSubject(new Person()); 
+				break;
+				}
+			case "company": {
+				contact.setSubject(new Company()); 
+				break;
+				}
+		}
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("contacts/id");
 		modelAndView.addObject(contact);
@@ -107,6 +118,17 @@ public class ContactController {
 		List<Contact> contactList = contactService.loadAll();
 		modelAndView.addObject(contactList);
 		modelAndView.setViewName("contacts/all");
+		return modelAndView;
+	}
+	
+	@GetMapping("/delete/{id}")
+	private ModelAndView deleteById(
+				@PathVariable Long id,
+				@RequestParam(name = "backToPage", required = false) String backToPage
+			) {
+		ModelAndView modelAndView = new ModelAndView();
+		contactService.deleteById(id);
+		modelAndView.setViewName("redirect:"+backToPage);
 		return modelAndView;
 	}
 	
