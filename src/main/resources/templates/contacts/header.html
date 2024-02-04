@@ -1,6 +1,11 @@
+<head>
+	<!-- my styles-->
+	<link rel="stylesheet" th:href="@{/css/myStyle.css}"/>
+</head>
 <div th:fragment="header" class="mb-2 border-bottom">	
 		<div class="text-center">
-			<span>CONTACTS APP.</span>
+			<h4>CONTACTS APP.</h4>
+			<img src="https://img.logoipsum.com/222.svg" alt="LOGO"/>
 		</div>
 		<div th:replace="./contacts/menu-main" :: menu-main></div>
 </div>

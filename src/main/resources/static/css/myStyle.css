@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+/**
+* BUTTONS 
+*/
+
+.myBtnSmall {
+	width: 3em;
+	margin: 0 1px 0 1px;
+}
+
+.myBtnNormal {
+	width: 5em;
+	margin: 0 1px 0 1px;
+}
+
+.myBtnRow {
+	width: 100%;
+	margin: 5px 1px 1px 1px;
+}
+
+/**
+* ROWS
+*/
+
+.myRowStandard {
+	margin: 1px 0 1px 0;
+}
+
+/**
+* FONTS
+*/
+
+.myFontSmall {
+	font-size: 12px;
+}

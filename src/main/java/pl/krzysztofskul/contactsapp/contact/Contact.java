@@ -45,9 +45,9 @@ public class Contact {
 	 * 
 	 */
 	public Contact() {
-		phoneNumberEntries.add(new PhoneNumberEntry<>("nr tel.", ""));
+		phoneNumberEntries.add(new PhoneNumberEntry<>("phone no.", ""));
 		emailEntries.add(new EmailEntry<>("email", ""));
-		addressEntryList.add(new AddressEntry("adres", new Address()));
+		addressEntryList.add(new AddressEntry("main adress", new Address()));
 	}
 
 	/**

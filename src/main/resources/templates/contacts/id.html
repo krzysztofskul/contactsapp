@@ -70,30 +70,71 @@
 					<div th:each="addressEntry : ${contact.addressEntryList}" class="row addressEntry">
 						<input th:id="'addressEntryId_' + ${addressEntry?.id}" name="addressEntryId" th:value="${addressEntry?.id}" type="hidden"/>
 						<input th:id="'addressId_' + ${addressEntry?.address?.id}" name="addressId" th:value="${addressEntry?.address.id}" type="hidden"/>
-						<div class="col-2">
-							<input th:id="'addressName_' + ${addressEntry?.id}" name="addressName" type="text" class="form-control" th:placeholder="${addressEntry?.name} ?  ${addressEntry?.name}" th:value="${addressEntry?.name} ?  ${addressEntry?.name}"/>
+						<div class="col-12 p-0 m-0">
+							<div class="row myRowStandard">
+								<div class="col-2">
+									<input th:id="'addressName_' + ${addressEntry?.id}" name="addressName" type="text" class="form-control" th:placeholder="${addressEntry?.name} ?  ${addressEntry?.name}" th:value="${addressEntry?.name} ?  ${addressEntry?.name}"/>
+								</div>
+								<div class="col-10">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text myFontSmall">COUNTRY</span>
+											<input  th:id="'addressCountry_' + ${addressEntry?.id}" name="addressCountry" type="text" class="form-control" th:placeholder="${addressEntry?.address?.country} ?  ${addressEntry?.address?.country}" th:value="${addressEntry?.address?.country} ?  ${addressEntry?.address?.country}"/>
+										</div>
+									</div>	
+								</div>
+							</div>
+							<div class="row myRowStandard">
+								<div class="col-2"></div>
+								<div class="col-2">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text myFontSmall">POSTAL CODE</span>
+								  			<input th:id="'addressZipCode_' + ${addressEntry?.id}" name="addressZipCode" type="text" class="form-control text-right" th:placeholder="${addressEntry?.address?.zipCode} ?  ${addressEntry?.address?.zipCode}" th:value="${addressEntry?.address?.zipCode} ?  ${addressEntry?.address?.zipCode}">
+										</div>
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text myFontSmall">CITY</span>
+								  			<input th:id="'addressCity_' + ${addressEntry?.id}" name="addressCity" type="text" class="form-control" th:placeholder="${addressEntry?.address?.city} ?  ${addressEntry?.address?.city}" th:value="${addressEntry?.address?.city} ?  ${addressEntry?.address?.city}">
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="col-4">
-						  <input th:id="'addressCountry_' + ${addressEntry?.id}" name="addressCountry" type="text" class="form-control" th:placeholder="${addressEntry?.address?.country} ?  ${addressEntry?.address?.country}" th:value="${addressEntry?.address?.country} ?  ${addressEntry?.address?.country}"/>
-						</div>
-						<div class="col-2">
-						  <input th:id="'addressZipCode_' + ${addressEntry?.id}" name="addressZipCode" type="text" class="form-control text-right" th:placeholder="${addressEntry?.address?.zipCode} ?  ${addressEntry?.address?.zipCode}" th:value="${addressEntry?.address?.zipCode} ?  ${addressEntry?.address?.zipCode}">
-						</div>
-						<div class="col-4">
-						  <input th:id="'addressCity_' + ${addressEntry?.id}" name="addressCity" type="text" class="form-control" th:placeholder="${addressEntry?.address?.city} ?  ${addressEntry?.address?.city}" th:value="${addressEntry?.address?.city} ?  ${addressEntry?.address?.city}">
-						</div>
-						<div class="col-2"></div>
-						<div class="col-8">
-						  <input th:id="'addressStreetName_' + ${addressEntry?.id}" name="addressStreetName" type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetName} ?  ${addressEntry?.address?.streetName}" th:value="${addressEntry?.address?.streetName} ?  ${addressEntry?.address?.streetName}">
-						</div>
-						<div class="col-1">
-						  <input th:id="'addressStreetNo_' + ${addressEntry?.id}" name="addressStreetNo" type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetNo} ?  ${addressEntry?.address?.streetNo}" th:value="${addressEntry?.address?.streetNo} ?  ${addressEntry?.address?.streetNo}">
-						</div>
-						<div class="col-1">
-						  <input th:id="'addressFlatNo _' + ${addressEntry?.id}" name="addressFlatNo" type="text" class="form-control" th:placeholder="${addressEntry?.address?.flatNo} ?  ${addressEntry?.address?.flatNo}" th:value="${addressEntry?.address?.flatNo} ?  ${addressEntry?.address?.flatNo}">
+						<div class="col-12 p-0 m-0">
+							<div class="row myRowStandard">
+								<div class="col-2"></div>
+								<div class="col-6">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text myFontSmall">STREET NAME</span>
+								  			<input th:id="'addressStreetName_' + ${addressEntry?.id}" name="addressStreetName" type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetName} ?  ${addressEntry?.address?.streetName}" th:value="${addressEntry?.address?.streetName} ?  ${addressEntry?.address?.streetName}">
+										</div>
+									</div>
+								</div>
+								<div class="col-2">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text myFontSmall">STREET NO.</span>
+								  			<input th:id="'addressStreetNo_' + ${addressEntry?.id}" name="addressStreetNo" type="text" class="form-control" th:placeholder="${addressEntry?.address?.streetNo} ?  ${addressEntry?.address?.streetNo}" th:value="${addressEntry?.address?.streetNo} ?  ${addressEntry?.address?.streetNo}">
+										</div>
+									</div>
+								</div>
+								<div class="col-2">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text myFontSmall">FLAT NO.</span>
+								  			<input th:id="'addressFlatNo _' + ${addressEntry?.id}" name="addressFlatNo" type="text" class="form-control" th:placeholder="${addressEntry?.address?.flatNo} ?  ${addressEntry?.address?.flatNo}" th:value="${addressEntry?.address?.flatNo} ?  ${addressEntry?.address?.flatNo}">
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="btn btn-sm btn-outline-success" id="btn-add-address">+</div>
+					<div class="btn btn-sm btn-outline-success myBtnRow" id="btn-add-address">+</div>
 					<!-- E-MAIL -->
 					<hr>
 					<div th:each="emailEntry : ${contact.emailEntries}" class="row emailEntry">
@@ -105,7 +146,7 @@
 						  <input type="text" th:id="'emailEntryData_' + ${emailEntry?.id}" name="emailEntryData" class="form-control" th:placeholder="${emailEntry?.data} ?  ${emailEntry?.data}" th:value="${emailEntry?.data} ?  ${emailEntry?.data}"/>
 						</div>
 					</div>
-					<div class="btn btn-sm btn-outline-success" id="btn-add-email">+</div>
+					<div class="btn btn-sm btn-outline-success myBtnRow" id="btn-add-email">+</div>
 					<!-- PHONE NO. -->
 					<hr>
 					<div th:each="phoneNumberEntry : ${contact.phoneNumberEntries}" class="row phoneNumberEntry">
@@ -117,28 +158,37 @@
 						  <input type="text" th:id="'phoneNumberEntryData_' + ${phoneNumberData?.id}" name="phoneNumberEntryData" class="form-control" th:placeholder="${phoneNumberEntry?.data} ?  ${phoneNumberEntry?.data}" th:value="${phoneNumberEntry?.data} ?  ${phoneNumberEntry?.data}">
 						</div>
 					</div>
-					<div class="btn btn-sm btn-outline-success" id="btn-add-phoneNumber">+</div>
+					<div class="btn btn-sm btn-outline-success myBtnRow" id="btn-add-phoneNumber">+</div>
 					
 				</div>		
 				
 				<div class="card-footer">
-					<button class="btn btn-sm btn-outline-success float-right" type="submit">
+					<button class="btn btn-sm btn-outline-success myBtnSmall float-right" type="submit">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
 						  <path d="M11 2H9v3h2V2Z"/>
 						  <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0ZM1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5Zm3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4v4.5ZM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5V15Z"/>
 						</svg>
 					</button>
-					<button class="btn btn-sm btn-outline-primary float-right" type="button">
+					<!--
+					<button class="btn btn-sm btn-outline-primary myBtnSmall float-right disabled" type="button">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
 						  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
 						  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 						</svg>
 					</button>
-					<button class="btn btn-sm btn-outline-danger float-right" type="button">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-						  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+					-->
+					<a href="/contacts/all" class="btn btn-sm btn-outline-warning myBtnSmall float-left" type="button">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+						  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
 						</svg>
-					</button>
+					</a>
+					<span th:if="${contact?.id} != 0">
+						<a th:href="@{/contacts/delete/{id}?backToPage=/contacts/all (id=${contact.id})}" class="btn btn-sm btn-outline-danger myBtnSmall float-left" type="button">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+							  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+							</svg>
+						</a>
+					</span>
 				</div>
 			
 			</div>

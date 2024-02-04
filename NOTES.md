@@ -3,22 +3,20 @@
 
 ##### VER. 0.1
 
-First test and demo version of the application with main functionalities.
+Demo version of the application with main functionalities.
 
-* basic home page
+* basic home page  
     * headers and footers for all pages / **done**
     * home button functionality / **done**
     * root page functionality ("/")
-    * back buttons to id and all contacts page
+    * back buttons to id and all contacts page **done**
 * create new contact / **done**
 * edit contact / **done**
-* delete contacts / **done**
+* delete contacts / **done**  
 * README file
 * InitDataGenerator class imported to the class path **done**
-
-##### VER. 0.2
-
-* create css styles
+* delete entities in the contact
+* create css styles **done**
 
 ##### VER. 1.0
 
