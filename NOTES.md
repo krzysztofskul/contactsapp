@@ -13,7 +13,7 @@ Demo version of the application with main functionalities.
 * create new contact / **done**
 * edit contact / **done**
 * delete contacts / **done**  
-* README file
+* README file **done**
 * InitDataGenerator class imported to the class path **done**
 * delete entities in the contact
 * create css styles **done**
