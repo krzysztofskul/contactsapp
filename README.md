@@ -1,17 +1,25 @@
 #### INTRODUCTION
 Simple hobby application created for testing and developing skills.
 
-#### APP. DESCRIPTION  
-The application allows to manage personal contacts. 
-* Create person or company. 
-* Add addresses, e-mails and phone numbers with own titles.
+#### DESCRIPTION  
+This application allows to manage personal contacts with specific functionalities like: 
+* create person or company contact entry;
+* add more than one address, e-mail and phone number with own titles;
+* edit data on the fly;
 
-#### Technology
+#### TECHNOLOGY
 * Java
 * SpringBoot
 * Hibernate
+* JavaScript/JQuery/Ajax
 * Bootstrap
 * Thymeleaf
+
+#### LINK
+
+Demo of the application is deployed for testing on railway.com below the link:  
+
+[https://contactsapp-production-fc44.up.railway.app/contacts/startpage](https://contactsapp-production-fc44.up.railway.app/contacts/startpage)
 
 #### SCREENSHOTS
 
@@ -26,3 +34,11 @@ The application allows to manage personal contacts.
 ![LIST OF ALL CONTACTS](src/main/resources/static/img/screenshots/id-page-01.png)
 -->
 <img src="src/main/resources/static/img/screenshots/id-page-01.png" width="1200"/>
+
+#### STATUS
+
+in progress
+
+#### CONTACT
+
+krzysztofskul@protonmail.com
