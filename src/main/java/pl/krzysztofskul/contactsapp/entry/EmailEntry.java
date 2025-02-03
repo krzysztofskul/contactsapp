@@ -2,12 +2,14 @@ package pl.krzysztofskul.contactsapp.entry;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import pl.krzysztofskul.contactsapp.contact.Contact;
 
 @Entity
+@Table(name = "contactsapp_emailentry")
 public class EmailEntry<T> extends Entry<String> {
 	
 	@ManyToOne

@@ -1,11 +1,13 @@
 package pl.krzysztofskul.contactsapp.subject;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import pl.krzysztofskul.contactsapp.contact.Address;
 
 @Entity
+@Table(name = "contactsapp_company")
 public class Company extends Subject {
 
 	private String name;

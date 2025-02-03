@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -12,6 +13,7 @@ import pl.krzysztofskul.contactsapp.contact.Address;
 import pl.krzysztofskul.contactsapp.contact.Contact;
 
 @Entity
+@Table(name = "contactsapp_addressentry")
 public class AddressEntry extends Entry<Address> {
 	
 	@ManyToOne

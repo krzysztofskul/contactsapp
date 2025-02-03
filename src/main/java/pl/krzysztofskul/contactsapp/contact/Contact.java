@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import pl.krzysztofskul.contactsapp.entry.AddressEntry;
@@ -19,6 +21,7 @@ import pl.krzysztofskul.contactsapp.entry.PhoneNumberEntry;
 import pl.krzysztofskul.contactsapp.subject.Subject;
 
 @Entity
+@Table(name = "contactsapp_contact")
 public class Contact {
 
 	@Id

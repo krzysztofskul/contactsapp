@@ -1,8 +1,10 @@
 package pl.krzysztofskul.contactsapp.subject;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "contactsapp_person")
 public class Person extends Subject {
 
 	private String nickname;
