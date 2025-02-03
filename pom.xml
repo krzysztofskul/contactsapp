@@ -14,7 +14,7 @@
 	<name>contactsapp</name>
 	<description>First test and demo version with main functionalities.</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>12</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
